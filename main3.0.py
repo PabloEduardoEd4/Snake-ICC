@@ -11,7 +11,7 @@ BACKGROUND_COLOR = (110, 110, 5)
 class Manzana:
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.manzana = pygame.image.load("Recursos/manzana255.png").convert()
+        self.manzana = pygame.image.load("images/manzana255.png").convert()
         self.x = 120
         self.y = 120
 
@@ -26,7 +26,7 @@ class Manzana:
 class Snake:
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.snake = pygame.image.load("Recursos/cabeza255.png").convert()
+        self.snake = pygame.image.load("images/cabeza255.png").convert()
         self.direccion = 'abajo'
 
         self.largo = 1
@@ -87,14 +87,14 @@ class Game:
         self.manzana.dibujar_manzana()
 
     def musica_fondo(self):
-        pygame.mixer.music.load("Recursos/bg_music_1.mp3")
+        pygame.mixer.music.load("audio/bg_music_1.mp3")
         pygame.mixer.music.play(-1, 0)
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("Recursos/crash.mp3")
+            sonido = pygame.mixer.Sound("audio/crash.mp3")
         elif sonidos == 'ding':
-            sonido = pygame.mixer.Sound("Recursos/ding.mp3")
+            sonido = pygame.mixer.Sound("audio/ding.mp3")
         pygame.mixer.Sound.play(sonido)
 
     def reset(self):
@@ -109,7 +109,7 @@ class Game:
         return False
 
     def fondo_juego(self):
-        bg = pygame.image.load("Recursos/fondo2.jpg")
+        bg = pygame.image.load("images/fondo2.jpg")
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
