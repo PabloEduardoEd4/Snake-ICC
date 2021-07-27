@@ -232,8 +232,10 @@ class Game:
     def highscores(self):
         self.surface = pygame.display.set_mode((1000, 500))
         font = pygame.font.SysFont('arial', 30)
-        #line1 = font.render(f"1 Player", True, (250, 255, 255))
-        line2 = font.render(f"Work in progress", True, (250, 255, 255))
+        line1 = font.render(f"Highscores", True, (250, 255, 255))
+        with open('highscore.txt','r+') as file:
+            highscores = sorted([x.strip('\n') for x in file], key = lambda x: int(x), reverse = True)
+            line2 = [font.render(x, True, (250, 255, 255)) for x in highscores][:5]
         line3 = font.render(f"Salir", True, (255, 255, 255))
 
         #button_1 = pygame.Rect(250,50,500,100)
@@ -250,8 +252,12 @@ class Game:
                 elif event.type == QUIT:
                     exit()
             pygame.draw.rect(self.surface, (255,0,0), button_3)
-            self.surface.blit(line2, (400, 90))
-            self.surface.blit(line3, (400, 190))
+            self.surface.blit(line1 , (400, 25))
+            down = 0
+            for x in line2:
+                self.surface.blit(x, (400, 90+down))
+                down += 27
+            self.surface.blit(line3, (400, 290))
             pygame.display.update()
 
     def game(self):
@@ -299,6 +305,6 @@ if __name__ == '__main__':
     game = Game()
     game.game()
     with open('highscore.txt','r+') as file:
-        highscores = [x.strip('\n') for x in file] + [str(game.score)]
+        highscores = sorted([x.strip('\n') for x in file] + [str(game.score)], key = lambda x: int(x), reverse = True)
     with open('highscore.txt','w') as file:
         file.write('\n'.join(highscores))
