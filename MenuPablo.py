@@ -6,6 +6,7 @@ import time
 import random
 import json
 
+from config import *
 from entities import *
 
 class Game:
@@ -237,7 +238,10 @@ class Game:
 if __name__ == '__main__':
     game = Game()
     game.game()
-    with open('highscore.txt','r+') as file:
-        highscores = sorted([x.strip('\n') for x in file] + [str(game.score)], key = lambda x: int(x), reverse = True)
-    with open('highscore.txt','w') as file:
-        file.write('\n'.join(highscores))
+
+    with open('highscore.json','r+') as file:
+        highscores = json.load(file)
+    highscores['Pablo'] = game.score
+    highscores = dict(sorted(highscores.items(), key = lambda x: x[1], reverse = True))
+    with open('highscore.json','w') as file:
+        json.dump(highscores, file)
