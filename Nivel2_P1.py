@@ -47,6 +47,7 @@ class bloques:
 class Game:
     def __init__(self):
         pygame.init()
+        self.surface = pygame.display.set_mode((1000, 520))
         pygame.display.set_caption("Snake Joaquin M")
 
         pygame.mixer.init()
@@ -77,6 +78,7 @@ class Game:
 
     def fondo_juego(self):
         bg = pygame.image.load("Recursos/fondo2.jpg")
+        
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
@@ -124,7 +126,6 @@ class Game:
     
 
     def run(self):
-        self.surface = pygame.display.set_mode((1000, 520))
         self.snake = Snake(self.surface)
         self.snake.dibujar_snake()
         self.manzana = Manzana(self.surface)

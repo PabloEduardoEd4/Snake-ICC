@@ -3,73 +3,8 @@ from pygame.locals import *
 import time
 import random
 
-Tamaño = 40
-BACKGROUND_COLOR = (110, 110, 5)
-Nivel = 1
-
-class Manzana:
-    def __init__(self, Dibujo):
-        self.Dibujo = Dibujo
-        self.manzana = pygame.image.load("Recursos/manzana255.png").convert()
-        self.x = 120
-        self.y = 120
-
-    def dibujar_manzana(self):
-        self.Dibujo.blit(self.manzana, (self.x, self.y))
-        pygame.display.flip()
-
-    def mover_manzana(self):
-        self.x = random.randint(1,24)*Tamaño
-        self.y = random.randint(1,11)*Tamaño
-
-class Snake:
-    def __init__(self, Dibujo):
-        self.Dibujo = Dibujo
-        self.snake = pygame.image.load("Recursos/cabeza255.png").convert()
-        self.direccion = 'abajo'
-
-        self.largo = 1
-        self.x = [40]
-        self.y = [40]
-
-    def mover_derecha(self):
-        self.direccion = 'derecha'
-
-    def mover_izquierda(self):
-        self.direccion = 'izquierda'
-
-    def mover_arriba(self):
-        self.direccion = 'arriba'
-
-    def mover_abajo(self):
-        self.direccion = 'abajo'
-
-    def mover_snake(self):
-        for i in range(self.largo-1,0,-1):
-            self.x[i] = self.x[i-1]
-            self.y[i] = self.y[i-1]
-
-        if self.direccion == 'derecha':
-            self.x[0] -= Tamaño
-        if self.direccion == 'izquierda':
-            self.x[0] += Tamaño
-        if self.direccion == 'arriba':
-            self.y[0] -= Tamaño
-        if self.direccion == 'abajo':
-            self.y[0] += Tamaño
-
-        self.dibujar_snake()
-
-    def dibujar_snake(self):
-        for i in range(self.largo):
-            self.Dibujo.blit(self.snake, (self.x[i], self.y[i]))
-
-        pygame.display.flip()
-
-    def incrementar_largo(self):
-        self.largo += 1
-        self.x.append(-1)
-        self.y.append(-1)
+from config import *
+from entities import *
 
 class bloques:
 
@@ -174,18 +109,11 @@ class bloques:
 class Game:
     def __init__(self):
         pygame.init()
+        self.surface = pygame.display.set_mode((1000, 520))
         pygame.display.set_caption("Snake Joaquin M")
 
         pygame.mixer.init()
         self.musica_fondo()
-
-        self.surface = pygame.display.set_mode((1000, 520))
-        self.snake = Snake(self.surface)
-        self.snake.dibujar_snake()
-        self.manzana = Manzana(self.surface)
-        self.manzana.dibujar_manzana()
-        self.bloque = bloques(self.surface)
-        self.bloque.dibujar_pared()
 
     def musica_fondo(self):
         pygame.mixer.music.load("Recursos/bg_music_1.mp3")
@@ -205,8 +133,8 @@ class Game:
 
 
     def colision(self, x1, y1, x2, y2):
-        if x1 >= x2 and x1 < x2 + Tamaño:
-            if y1 >= y2 and y1 < y2 + Tamaño:
+        if x1 >= x2 and x1 < x2 + SIZE:
+            if y1 >= y2 and y1 < y2 + SIZE:
                 return True
         return False
 
@@ -260,6 +188,14 @@ class Game:
     
 
     def run(self):
+        self.surface = pygame.display.set_mode((1000, 520))
+        self.snake = Snake(self.surface)
+        self.snake.dibujar_snake()
+        self.manzana = Manzana(self.surface)
+        self.manzana.dibujar_manzana()
+        self.bloque = bloques(self.surface)
+        self.bloque.dibujar_pared()
+
         running = True
         pausa = False
 

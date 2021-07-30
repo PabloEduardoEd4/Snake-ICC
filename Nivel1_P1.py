@@ -52,7 +52,7 @@ class Game:
         # Comer Manzana
         for i in range(self.snake.largo):
             if self.colision(self.snake.x[i], self.snake.y[i], self.manzana.x, self.manzana.y):
-                self.musica_juego("di   ng")
+                self.musica_juego("ding")
                 self.snake.incrementar_largo()
                 self.manzana.mover_manzana()
 
