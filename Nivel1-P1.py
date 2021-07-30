@@ -88,8 +88,6 @@ class Game:
         pygame.mixer.music.pause()
         pygame.display.flip()
 
-    
-
     def run(self):
         running = True
         pausa = False

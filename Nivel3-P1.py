@@ -74,14 +74,6 @@ class Game:
         pygame.mixer.init()
         self.musica_fondo()
 
-        self.surface = pygame.display.set_mode((1000, 520))
-        self.snake = Snake(self.surface)
-        self.snake.dibujar_snake()
-        self.manzana = Manzana(self.surface)
-        self.manzana.dibujar_manzana()
-        self.bloque = bloques(self.surface)
-        self.bloque.dibujar_pared()
-
     def musica_fondo(self):
         pygame.mixer.music.load("Recursos/bg_music_1.mp3")
         pygame.mixer.music.play(-1, 0)
@@ -155,6 +147,14 @@ class Game:
     
 
     def run(self):
+        self.surface = pygame.display.set_mode((1000, 520))
+        self.snake = Snake(self.surface)
+        self.snake.dibujar_snake()
+        self.manzana = Manzana(self.surface)
+        self.manzana.dibujar_manzana()
+        self.bloque = bloques(self.surface)
+        self.bloque.dibujar_pared()
+
         running = True
         pausa = False
 
