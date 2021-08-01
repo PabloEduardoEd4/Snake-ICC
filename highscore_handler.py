@@ -11,12 +11,13 @@ def add(name, score, filename = 'highscore.json'):
         json.dump(highscores, file)
 
 def get(filename = 'highscore.json'):
-    with open(filename,'r') as file:
         try:
-            highscores = json.load(file)
-            return dict(sorted(highscores.items(), key = lambda x: x[1], reverse = True))
+            with open(filename,'r') as file:
+                highscores = json.load(file)
+                return dict(sorted(highscores.items(), key = lambda x: x[1], reverse = True))
         except:
-            json.dump({}, file)
+            with open(filename,'w') as file:
+                json.dump({}, file)
             return {}
 
 if __name__ == '__main__':

@@ -4,11 +4,11 @@ import time
 from random import randint
 import json
 
-def register(surface):
+def register(surface, text = "Type Name of P1"):
     surface.fill((0,0,0))
     name = ''
     font = pygame.font.SysFont('arial',30)
-    line1 = font.render(f"Type Name", True, (250, 255, 255))
+    line1 = font.render(text, True, (250, 255, 255))
     surface.blit(line1 , (400, 25))
     while True:
         for event in pygame.event.get():

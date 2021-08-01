@@ -20,11 +20,13 @@ def menu(surface):
             if button_1.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        return plyrs(surface)
+                        res = plyrs(surface) 
+                        if res != None:
+                            return res
             if button_2.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        highscores(surface)
+                        return highscores(surface)
             if button_3.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
@@ -65,7 +67,7 @@ def plyrs(surface):
             if button_3.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        menu(surface)
+                        return menu(surface)
             elif event.type == QUIT:
                 exit()
         pygame.draw.rect(surface, (255,0,0), button_1)
@@ -95,7 +97,7 @@ def highscores(surface):
             if button_3.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        menu(surface)
+                        return menu(surface)
             elif event.type == QUIT:
                 exit()
         pygame.draw.rect(surface, (255,0,0), button_3)
