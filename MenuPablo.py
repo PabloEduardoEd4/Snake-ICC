@@ -6,72 +6,8 @@ import time
 import random
 import json
 
-Tamaño = 40
-BACKGROUND_COLOR = (110, 110, 5)
-
-class Manzana:
-    def __init__(self, Dibujo):
-        self.Dibujo = Dibujo
-        self.manzana = pygame.image.load("manzana255.png").convert()
-        self.x = 120
-        self.y = 120
-
-    def dibujar_manzana(self):
-        self.Dibujo.blit(self.manzana, (self.x, self.y))
-        pygame.display.flip()
-
-    def mover_manzana(self):
-        self.x = random.randint(1,24)*Tamaño
-        self.y = random.randint(1,11)*Tamaño
-
-class Snake:
-    def __init__(self, Dibujo):
-        self.Dibujo = Dibujo
-        self.snake = pygame.image.load("cabeza255.png").convert()
-        self.direccion = 'abajo'
-
-        self.largo = 1
-        self.x = [40]
-        self.y = [40]
-
-    def mover_derecha(self):
-        self.direccion = 'derecha'
-
-    def mover_izquierda(self):
-        self.direccion = 'izquierda'
-
-    def mover_arriba(self):
-        self.direccion = 'arriba'
-
-    def mover_abajo(self):
-        self.direccion = 'abajo'
-
-    def mover_snake(self):
-        for i in range(self.largo-1,0,-1):
-            self.x[i] = self.x[i-1]
-            self.y[i] = self.y[i-1]
-
-        if self.direccion == 'derecha':
-            self.x[0] -= Tamaño
-        if self.direccion == 'izquierda':
-            self.x[0] += Tamaño
-        if self.direccion == 'arriba':
-            self.y[0] -= Tamaño
-        if self.direccion == 'abajo':
-            self.y[0] += Tamaño
-
-        self.dibujar_snake()
-
-    def dibujar_snake(self):
-        for i in range(self.largo):
-            self.Dibujo.blit(self.snake, (self.x[i], self.y[i]))
-
-        pygame.display.flip()
-
-    def incrementar_largo(self):
-        self.largo += 1
-        self.x.append(-1)
-        self.y.append(-1)
+from config import *
+from entities import *
 
 class Game:
     def __init__(self):
@@ -91,14 +27,14 @@ class Game:
         self.manzana.dibujar_manzana()
 
     def musica_fondo(self):
-        pygame.mixer.music.load("bg_music_1.mp3")
+        pygame.mixer.music.load("Recursos/bg_music_1.mp3")
         pygame.mixer.music.play(-1, 0)
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("crash.mp3")
+            sonido = pygame.mixer.Sound("Recursos/crash.mp3")
         elif sonidos == 'ding':
-            sonido = pygame.mixer.Sound("ding.mp3")
+            sonido = pygame.mixer.Sound("Recursos/ding.mp3")
         pygame.mixer.Sound.play(sonido)
 
     def reset(self):
@@ -107,13 +43,13 @@ class Game:
 
 
     def colision(self, x1, y1, x2, y2):
-        if x1 >= x2 and x1 < x2 + Tamaño:
-            if y1 >= y2 and y1 < y2 + Tamaño:
+        if x1 >= x2 and x1 < x2 + SIZE:
+            if y1 >= y2 and y1 < y2 + SIZE:
                 return True
         return False
 
     def fondo_juego(self):
-        bg = pygame.image.load("fondo2.jpg")
+        bg = pygame.image.load("Recursos/fondo2.jpg")
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
@@ -157,8 +93,6 @@ class Game:
         pygame.mixer.music.pause()
         pygame.display.flip()
 
-    def run(self):
-        pass
 
     def menu(self):
         font = pygame.font.SysFont('arial', 30)
@@ -304,7 +238,10 @@ class Game:
 if __name__ == '__main__':
     game = Game()
     game.game()
-    with open('highscore.txt','r+') as file:
-        highscores = sorted([x.strip('\n') for x in file] + [str(game.score)], key = lambda x: int(x), reverse = True)
-    with open('highscore.txt','w') as file:
-        file.write('\n'.join(highscores))
+
+    with open('highscore.json','r+') as file:
+        highscores = json.load(file)
+    highscores['Pablo'] = game.score
+    highscores = dict(sorted(highscores.items(), key = lambda x: x[1], reverse = True))
+    with open('highscore.json','w') as file:
+        json.dump(highscores, file)
