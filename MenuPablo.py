@@ -8,6 +8,7 @@ import json
 
 from config import *
 from entities import *
+import highscore_handler
 
 class Game:
     def __init__(self):
@@ -167,9 +168,9 @@ class Game:
         self.surface = pygame.display.set_mode((1000, 500))
         font = pygame.font.SysFont('arial', 30)
         line1 = font.render(f"Highscores", True, (250, 255, 255))
-        with open('highscore.txt','r+') as file:
-            highscores = sorted([x.strip('\n') for x in file], key = lambda x: int(x), reverse = True)
-            line2 = [font.render(x, True, (250, 255, 255)) for x in highscores][:5]
+        highscores = highscore_handler.get()
+        highscores = [f'{x} : {highscores[x]}'for x in highscores.keys()]
+        line2 = [font.render(x, True, (250, 255, 255)) for x in highscores][:5]
         line3 = font.render(f"Salir", True, (255, 255, 255))
 
         #button_1 = pygame.Rect(250,50,500,100)
@@ -239,9 +240,4 @@ if __name__ == '__main__':
     game = Game()
     game.game()
 
-    with open('highscore.json','r+') as file:
-        highscores = json.load(file)
-    highscores['Pablo'] = game.score
-    highscores = dict(sorted(highscores.items(), key = lambda x: x[1], reverse = True))
-    with open('highscore.json','w') as file:
-        json.dump(highscores, file)
+    
