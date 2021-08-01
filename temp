@@ -132,6 +132,10 @@ class Game:
     
 
     def run(self):
+        #
+        self.snake1 = Snake(self.surface)
+        self.snake1.dibujar_snake()
+        #
         self.snake = Snake(self.surface)
         self.snake.dibujar_snake()
         self.manzana = Manzana(self.surface)
@@ -165,6 +169,19 @@ class Game:
                         if event.key == K_DOWN:
                             self.snake.mover_abajo()
                         
+                        if event.key == K_a:
+                            self.snake1.mover_derecha()
+
+                        if event.key == K_d:
+                            self.snake1.mover_izquierda()
+
+                        if event.key == K_w:
+                            self.snake1.mover_arriba()
+
+                        if event.key == K_s:
+                            self.snake1.mover_abajo()
+
+                        
                 if self.snake.x[0] == 400 and self.snake.y[0] == 40:
                     running = False
                 elif self.snake.x[0] == 400 and self.snake.y[0] == 80:
@@ -173,6 +190,7 @@ class Game:
                     running = False
                 elif self.snake.x[0] == 400 and self.snake.y[0] == 160:
                     running = False
+
             
                 elif event.type == QUIT:
                     running = False
