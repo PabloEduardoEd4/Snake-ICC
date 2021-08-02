@@ -46,7 +46,6 @@ if __name__ == '__main__':
         for x in range(len(P2)):
             game = P2Game(walls = P2[x], snakepos = snakepos[x] ,maxscore = points[x],surface = surface)
             notended = game.run()
-            print(notended)
             if not notended:
                 break
     '''
