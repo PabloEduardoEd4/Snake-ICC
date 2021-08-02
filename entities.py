@@ -30,6 +30,7 @@ class Snake:
     def __init__(self, Dibujo, pos = (40,40), imagen = "Recursos/cabeza255.png"):
         self.Dibujo = Dibujo
         self.snake = pygame.image.load(imagen).convert()
+        self.snake = pygame.transform.smoothscale(self.snake, (40,40))
         self.direccion = ''
 
         self.largo = 1
@@ -76,10 +77,10 @@ class Snake:
         self.y.append(-1)
 
 class bloques:
-    def __init__(self, Dibujo , walls):
+    def __init__(self, Dibujo , walls, imagen = "Recursos/piedra_2.jpg"):
         self.walls = walls
         self.Dibujo = Dibujo
-        self.bloque = pygame.image.load("piedra_2.jpg").convert()
+        self.bloque = pygame.image.load(imagen).convert()
 
     def dibujar_pared(self):
         for x in self.walls:

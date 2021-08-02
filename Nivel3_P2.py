@@ -126,7 +126,7 @@ class bloques:
 
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.bloque = pygame.image.load("piedra_2.jpg").convert()
+        self.bloque = pygame.image.load("Recursos/piedra_2.jpg").convert()
 
         self.x = 40
         self.y = 40
@@ -273,135 +273,6 @@ class Game:
 
                         if event.key == K_DOWN:
                             self.snake2.mover_abajo()
-
-                v = 40
-                for x in range(self.snake.largo):
-                    if self.snake.x[0] == v * 8 and self.snake.y[0] == v * 5:
-                        running = False
-                    if self.snake.x[0] == v * 9 and self.snake.y[0] == v * 5:
-                        running = False
-                    if self.snake.x[0] == v * 10 and self.snake.y[0] == v * 5:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 1 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 2 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 8 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 9 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 10 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 11 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 12 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 13 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 14 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 15 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 16 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 17 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 18 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 19 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 20 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 21 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 22 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 23 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 0:
-                        running = False
-                    if self.snake.x[0] == v * 23 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 22 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 2:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 3:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 4:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 5:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 6:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 7:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 8:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 9:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 10:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 11:
-                        running = False
-                    if self.snake.x[0] == v * 0 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 1:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 2:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 3:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 4:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 5:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 6:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 7:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 8:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 9:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 10:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 11:
-                        running = False
-                    if self.snake.x[0] == v * 24 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 1 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 2 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 8 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 9 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 10 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 11 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 12 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 13 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 14 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 15 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 16 and self.snake.y[0] == v * 12:
-                        running = False
-                    if self.snake.x[0] == v * 16 and self.snake.y[0] == v * 8:
-                        running = False
-                    if self.snake.x[0] == v * 17 and self.snake.y[0] == v * 8:
-                        running = False
-                    if self.snake.x[0] == v * 18 and self.snake.y[0] == v * 8:
-                        running = False
                 if event.type == QUIT:
                     running = False
             try:

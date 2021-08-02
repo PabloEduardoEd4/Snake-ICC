@@ -16,7 +16,6 @@ if __name__ == '__main__':
     pygame.display.set_caption("Snake v5.0")
     surface = pygame.display.set_mode(DISPLAY_MODE)
     name = login.register(surface)
-    print(name)
     if name == None:
         exit()
     plys = menu.menu(surface)
@@ -29,7 +28,7 @@ if __name__ == '__main__':
     with open('pastgames.txt', 'a+') as file:
         file.write(f'{game_name}\n')
     if plys == 1:
-        points = [20,35,40,45]
+        points = [2,2,2,2]
         curscore = 0
         for x in range(len(P1)):
             game = P1Game(walls = P1[x], maxscore = points[x],surface = surface)
@@ -38,6 +37,18 @@ if __name__ == '__main__':
             if not notlost:
                 break
         highscore_handler.add(game_name, curscore)
+    if plys == 2:
+        points = (2,2,2,2)
+        snakepos = (((40, 120), (600, 120)),
+                    ((40, 240), (720, 240)),
+                    ((120, 200), (720, 200)),
+                    ((40, 80), (840, 80)))
+        for x in range(len(P2)):
+            game = P2Game(walls = P2[x], snakepos = snakepos[x] ,maxscore = points[x],surface = surface)
+            notended = game.run()
+            print(notended)
+            if not notended:
+                break
     '''
     highscore_handler.add('Pablo', 5)
     input()
