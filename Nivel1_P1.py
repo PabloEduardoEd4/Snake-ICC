@@ -8,6 +8,8 @@ import random
 from config import *
 from entities import *
 
+walls = []
+
 class Game:
     def __init__(self, surface):
         self.surface = surface
@@ -28,7 +30,7 @@ class Game:
 
     def reset(self):
         self.snake = Snake(self.surface)
-        self.manzana = Manzana(self.surface)
+        self.manzana = Manzana(self.surface, walls)
 
 
     def colision(self, x1, y1, x2, y2):
@@ -84,7 +86,7 @@ class Game:
     def run(self):
         self.snake = Snake(self.surface)
         self.snake.dibujar_snake()
-        self.manzana = Manzana(self.surface)
+        self.manzana = Manzana(self.surface, walls)
         self.manzana.dibujar_manzana()
         
         running = True
@@ -127,5 +129,8 @@ class Game:
             time.sleep(.1)
 
 if __name__ == '__main__':
-    game = Game()
+    pygame.init()
+    pygame.display.set_caption("Snake v5.0")
+    surface = pygame.display.set_mode(DISPLAY_MODE)
+    game = Game(surface)
     game.run()

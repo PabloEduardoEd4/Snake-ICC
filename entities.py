@@ -6,11 +6,13 @@ import random
 from config import *
 
 class Manzana:
-    def __init__(self, Dibujo):
+    def __init__(self, Dibujo, walls, imagen = "Recursos/manzana255.png"):
         self.Dibujo = Dibujo
-        self.manzana = pygame.image.load("Recursos/manzana255.png").convert()
+        self.manzana = pygame.image.load(imagen).convert()
         self.x = 120
         self.y = 120
+
+        self.walls = walls
 
     def dibujar_manzana(self):
         self.Dibujo.blit(self.manzana, (self.x, self.y))
@@ -19,16 +21,20 @@ class Manzana:
     def mover_manzana(self):
         self.x = random.randint(1,24)*SIZE
         self.y = random.randint(1,11)*SIZE
+        while (self.x, self.y) in self.walls:
+            self.x = random.randint(1,24)*SIZE
+            self.y = random.randint(1,11)*SIZE
+
 
 class Snake:
-    def __init__(self, Dibujo):
+    def __init__(self, Dibujo, pos = (40,40), imagen = "Recursos/cabeza255.png"):
         self.Dibujo = Dibujo
-        self.snake = pygame.image.load("Recursos/cabeza255.png").convert()
-        self.direccion = 'abajo'
+        self.snake = pygame.image.load(imagen).convert()
+        self.direccion = ''
 
         self.largo = 1
-        self.x = [40]
-        self.y = [40]
+        self.x = [pos[0]]
+        self.y = [pos[1]]
 
     def mover_derecha(self):
         self.direccion = 'derecha'
@@ -68,3 +74,16 @@ class Snake:
         self.largo += 1
         self.x.append(-1)
         self.y.append(-1)
+
+class bloques:
+    def __init__(self, Dibujo , cords):
+        self.cords = cords
+        self.Dibujo = Dibujo
+        self.bloque = pygame.image.load("piedra_2.jpg").convert()
+
+
+    def dibujar_pared(self):
+        for x in self.cords:
+            self.Dibujo.blit(self.bloque, (x[0], x[1]))
+        
+        pygame.display.flip()
