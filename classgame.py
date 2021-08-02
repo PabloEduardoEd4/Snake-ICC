@@ -1,20 +1,25 @@
-
 import pygame
 from pygame.locals import *
-import time
-import random
 
 from config import *
 from entities import *
 
-walls = [(200, 200), (240, 240), (280, 280), (320, 320), (400, 320), (440, 360), (480, 400), (580, 480), (620, 480), (600, 40), (640, 40), (680, 40), (720, 40), (760, 40), (760, 60), (760, 80), (760, 100)]
-
-class Game:
-    def __init__(self, surface):
+class P1Game:
+    def __init__(self, walls = (), maxscore = 20, surface = pygame.display.set_mode(DISPLAY_MODE)):
+        self.walls = walls
+        self.maxscore = maxscore
         self.surface = surface
         self.surface.fill((0,0,0))
+
         pygame.mixer.init()
         self.musica_fondo()
+
+        self.snake = Snake(self.surface)
+        self.snake.dibujar_snake()
+        self.manzana = Manzana(self.surface, self.walls)
+        self.manzana.dibujar_manzana()
+        self.bloque = bloques(self.surface, self.walls)
+        self.bloque.dibujar_pared()
 
     def musica_fondo(self):
         pygame.mixer.music.load("Recursos/bg_music_1.mp3")
@@ -29,8 +34,8 @@ class Game:
 
     def reset(self):
         self.snake = Snake(self.surface)
-        self.manzana = Manzana(self.surface, walls)
-        self.bloque = bloques(self.surface, walls)
+        self.manzana = Manzana(self.surface, self.walls)
+        self.bloque = bloques(self.surface, self.walls)
 
 
     def colision(self, x1, y1, x2, y2):
@@ -65,15 +70,15 @@ class Game:
                 raise "Se toca"
 
         # Toca pared
-        if not (0 <= self.snake.x[0] <= 960 and 0 <= self.snake.y[0] <= 500):
+        if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
             raise "Toco Pared"
-        for x in walls:
+
+        for x in self.walls:
             for i in range(self.snake.largo):
                 if self.colision(self.snake.x[i], self.snake.y[i], x[0], x[1]):
                     self.musica_juego('crash')
                     raise "Toco Pared"
-
 
 
     def score(self):
@@ -94,13 +99,6 @@ class Game:
     
 
     def run(self):
-        self.snake = Snake(self.surface)
-        self.snake.dibujar_snake()
-        self.manzana = Manzana(self.surface, walls)
-        self.manzana.dibujar_manzana()
-        self.bloque = bloques(self.surface, walls)
-        self.bloque.dibujar_pared()
-
         running = True
         pausa = False
 
@@ -133,19 +131,12 @@ class Game:
 
                 if not pausa:
                     self.jugar()
+                    if self.snake.largo == self.maxscore:
+                        return True, self.snake.largo
 
             except Exception as e:
                 self.perder()
                 pausa = True
                 self.reset()
             time.sleep(.1)
-
-
-
-
-if __name__ == '__main__':
-    pygame.init()
-    pygame.display.set_caption("Snake v5.0")
-    surface = pygame.display.set_mode(DISPLAY_MODE)
-    game = Game(surface)
-    game.run()
+        return False, self.snake.largo

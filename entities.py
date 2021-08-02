@@ -76,14 +76,13 @@ class Snake:
         self.y.append(-1)
 
 class bloques:
-    def __init__(self, Dibujo , cords):
-        self.cords = cords
+    def __init__(self, Dibujo , walls):
+        self.walls = walls
         self.Dibujo = Dibujo
         self.bloque = pygame.image.load("piedra_2.jpg").convert()
 
-
     def dibujar_pared(self):
-        for x in self.cords:
+        for x in self.walls:
             self.Dibujo.blit(self.bloque, (x[0], x[1]))
         
         pygame.display.flip()

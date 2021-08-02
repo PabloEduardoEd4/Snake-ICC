@@ -8,74 +8,7 @@ import random
 from entities import *
 from config import *
 
-
-class bloques:
-
-    def __init__(self, Dibujo):
-        self.Dibujo = Dibujo
-        self.bloque = pygame.image.load("piedra_2.jpg").convert()
-
-        self.x = 40
-        self.y = 40
-
-    def dibujar_pared(self):
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*2, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*3, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*4, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*5, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*6, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*7, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*8, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*9, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*11, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*12, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*13, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*14, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*15, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*16, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*2))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*3))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*4))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*23, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*22, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*21, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*20, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*19, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*18, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*2, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*3, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*4, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*20, self.y*9))
-        self.Dibujo.blit(self.bloque, (self.x*19, self.y*9))
-        self.Dibujo.blit(self.bloque, (self.x*18, self.y*9))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*11, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*12, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*13, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*11))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*2, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*3, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*4, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*5, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*6, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*7, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*8, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*9, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*11, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*12, self.y*12))
-        pygame.display.flip()
+walls = [(0, 0), (40, 0), (80, 0), (120, 0), (160, 0), (200, 0), (240, 0), (280, 0), (320, 0), (360, 0), (400, 0), (440, 0), (480, 0), (520, 0), (560, 0), (600, 0), (640, 0), (960, 0), (960, 40), (960, 80), (960, 120), (960, 160), (960, 200), (960, 200), (920, 200), (880, 200), (840, 200), (800, 200), (760, 200), (720, 200), (0, 200), (40, 200), (80, 200), (120, 200), (160, 200), (800, 360), (760, 360), (720, 360), (400, 240), (440, 240), (480, 240), (520, 240), (0, 440), (0, 480), (40, 480), (80, 480), (120, 480), (160, 480), (200, 480), (240, 480), (280, 480), (320, 480), (360, 480), (400, 480), (440, 480), (480, 480)]
 
 class Game:
     def __init__(self):
@@ -91,9 +24,9 @@ class Game:
         self.snake2 = Snake(self.surface, (875, 95), "Recursos/verde.png")
         self.snake.dibujar_snake()
         self.snake2.dibujar_snake()
-        self.manzana = Manzana(self.surface)
+        self.manzana = Manzana(self.surface, walls)
         self.manzana.dibujar_manzana()
-        self.bloque = bloques(self.surface)
+        self.bloque = bloques(self.surface, walls)
         self.bloque.dibujar_pared()
 
     def musica_fondo(self):
@@ -108,7 +41,7 @@ class Game:
     def reset(self):
         self.snake = Snake(self.surface, (40, 95), "Recursos/morado.jpg" )
         self.snake2 = Snake(self.surface, (875, 95), "Recursos/verde.png")
-        self.manzana = Manzana(self.surface)
+        self.manzana = Manzana(self.surface, walls)
 
 
     def colision(self, x1, y1, x2, y2):

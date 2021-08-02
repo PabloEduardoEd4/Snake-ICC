@@ -4,12 +4,13 @@ from pygame.locals import *
 import time
 import random
 
-Tamaño = 40
+from entities import *
+from config import *
 
 class Manzana:
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.manzana = pygame.image.load("manzi.png").convert()
+        self.manzana = pygame.image.load("Recursos/manzi.png").convert()
         self.x = 120
         self.y = 120
 
@@ -18,13 +19,13 @@ class Manzana:
         pygame.display.flip()
 
     def mover_manzana(self):
-        self.x = random.randint(1,24)*Tamaño
-        self.y = random.randint(1,11)*Tamaño
+        self.x = random.randint(1,24)*SIZE
+        self.y = random.randint(1,11)*SIZE
 
 class Snake:
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.snake = pygame.image.load("morado.jpg").convert()
+        self.snake = pygame.image.load("Recursos/morado.jpg").convert()
         self.direccion = ''
 
         self.largo = 1
@@ -50,13 +51,13 @@ class Snake:
             self.y[i] = self.y[i-1]
 
         if self.direccion == 'derecha':
-            self.x[0] -= Tamaño
+            self.x[0] -= SIZE
         if self.direccion == 'izquierda':
-            self.x[0] += Tamaño
+            self.x[0] += SIZE
         if self.direccion == 'arriba':
-            self.y[0] -= Tamaño
+            self.y[0] -= SIZE
         if self.direccion == 'abajo':
-            self.y[0] += Tamaño
+            self.y[0] += SIZE
 
         self.dibujar_snake()
 
@@ -74,7 +75,7 @@ class Snake:
 class Snake2:
     def __init__(self, Dibujo):
         self.Dibujo = Dibujo
-        self.snake2 = pygame.image.load("verde.png").convert()
+        self.snake2 = pygame.image.load("Recursos/verde.png").convert()
         self.direccion = ''
 
         self.largo = 1
@@ -100,13 +101,13 @@ class Snake2:
             self.y[i] = self.y[i-1]
 
         if self.direccion == 'derecha':
-            self.x[0] -= Tamaño
+            self.x[0] -= SIZE
         if self.direccion == 'izquierda':
-            self.x[0] += Tamaño
+            self.x[0] += SIZE
         if self.direccion == 'arriba':
-            self.y[0] -= Tamaño
+            self.y[0] -= SIZE
         if self.direccion == 'abajo':
-            self.y[0] += Tamaño
+            self.y[0] += SIZE
 
         self.dibujar_snake2()
 
@@ -131,81 +132,8 @@ class bloques:
         self.y = 40
 
     def dibujar_pared(self):
-
-        self.Dibujo.blit(self.bloque, (self.x*8, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*9, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*5))
-
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*2, self.y*0))
-
-        self.Dibujo.blit(self.bloque, (self.x*8, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*9, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*11, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*12, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*13, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*14, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*15, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*16, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*17, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*18, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*19, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*20, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*21, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*22, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*23, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*0))
-        self.Dibujo.blit(self.bloque, (self.x*23, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*22, self.y*12))
-
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*2))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*3))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*4))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*7))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*8))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*9))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*10))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*11))
-        self.Dibujo.blit(self.bloque, (self.x*0, self.y*12))
-
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*2))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*3))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*4))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*5))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*6))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*7))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*8))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*9))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*10))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*11))
-        self.Dibujo.blit(self.bloque, (self.x*24, self.y*12))
-
-        self.Dibujo.blit(self.bloque, (self.x, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*2, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*3, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*4, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*5, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*6, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*7, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*8, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*9, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*10, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*11, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*12, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*13, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*14, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*15, self.y*12))
-        self.Dibujo.blit(self.bloque, (self.x*16, self.y*12))
-
-        self.Dibujo.blit(self.bloque, (self.x*16, self.y*8))
-        self.Dibujo.blit(self.bloque, (self.x*17, self.y*8))
-        self.Dibujo.blit(self.bloque, (self.x*18, self.y*8))
+        temp = [(self.x*8, self.y*5), (self.x*9, self.y*5), (self.x*10, self.y*5), (self.x*0, self.y*0), (self.x, self.y*0), (self.x*2, self.y*0), (self.x*8, self.y*0), (self.x*9, self.y*0), (self.x*10, self.y*0), (self.x*11, self.y*0), (self.x*12, self.y*0), (self.x*13, self.y*0), (self.x*14, self.y*0), (self.x*15, self.y*0), (self.x*16, self.y*0), (self.x*17, self.y*0), (self.x*18, self.y*0), (self.x*19, self.y*0), (self.x*20, self.y*0), (self.x*21, self.y*0), (self.x*22, self.y*0), (self.x*23, self.y*0), (self.x*24, self.y*0), (self.x*23, self.y*12), (self.x*22, self.y*12), (self.x*0, self.y), (self.x*0, self.y*2), (self.x*0, self.y*3), (self.x*0, self.y*4), (self.x*0, self.y*5), (self.x*0, self.y*6), (self.x*0, self.y*7), (self.x*0, self.y*8), (self.x*0, self.y*9), (self.x*0, self.y*10), (self.x*0, self.y*11), (self.x*0, self.y*12), (self.x*24, self.y), (self.x*24, self.y*2), (self.x*24, self.y*3), (self.x*24, self.y*4), (self.x*24, self.y*5), (self.x*24, self.y*6), (self.x*24, self.y*7), (self.x*24, self.y*8), (self.x*24, self.y*9), (self.x*24, self.y*10), (self.x*24, self.y*11), (self.x*24, self.y*12), (self.x, self.y*12), (self.x*2, self.y*12), (self.x*3, self.y*12), (self.x*4, self.y*12), (self.x*5, self.y*12), (self.x*6, self.y*12), (self.x*7, self.y*12), (self.x*8, self.y*12), (self.x*9, self.y*12), (self.x*10, self.y*12), (self.x*11, self.y*12), (self.x*12, self.y*12), (self.x*13, self.y*12), (self.x*14, self.y*12), (self.x*15, self.y*12), (self.x*16, self.y*12), (self.x*16, self.y*8), (self.x*17, self.y*8), (self.x*18, self.y*8)]
+        print(temp)
         pygame.display.flip()
 
 class Game:
@@ -227,7 +155,7 @@ class Game:
         self.bloque.dibujar_pared()
 
     def musica_fondo(self):
-        pygame.mixer.music.load("bg_music_1.mp3")
+        pygame.mixer.music.load("Recursos/bg_music_1.mp3")
         pygame.mixer.music.play(-1, 0)
 
     def musica_juego(self, sonidos):
@@ -242,13 +170,13 @@ class Game:
 
 
     def colision(self, x1, y1, x2, y2):
-        if x1 >= x2 and x1 < x2 + Tamaño:
-            if y1 >= y2 and y1 < y2 + Tamaño:
+        if x1 >= x2 and x1 < x2 + SIZE:
+            if y1 >= y2 and y1 < y2 + SIZE:
                 return True
         return False
 
     def fondo_juego(self):
-        bg = pygame.image.load("fondo2.jpg")
+        bg = pygame.image.load("Recursos/fondo2.jpg")
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
