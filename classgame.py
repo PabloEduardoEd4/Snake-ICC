@@ -27,7 +27,7 @@ class P1Game:
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("Recursos/crash.mp3")
+            sonido = pygame.mixer.Sound("Recursos/roblox.mp3")
         elif sonidos == 'ding':
             sonido = pygame.mixer.Sound("Recursos/ding.mp3")
         pygame.mixer.Sound.play(sonido)
@@ -45,7 +45,8 @@ class P1Game:
         return False
 
     def fondo_juego(self):
-        bg = pygame.image.load("Recursos/fondo2.jpg")
+        bg = pygame.image.load("Recursos/pasto.jpg")
+        bg = pygame.transform.smoothscale(bg, DISPLAY_MODE)
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
@@ -168,7 +169,7 @@ class P2Game:
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("Recursos/crash.mp3")
+            sonido = pygame.mixer.Sound("Recursos/roblox.mp3")
         if sonidos == 'ding':
             sonido = pygame.mixer.Sound("Recursos/ding.mp3")
         pygame.mixer.Sound.play(sonido)
@@ -188,6 +189,7 @@ class P2Game:
 
     def fondo_juego(self):
         bg = pygame.image.load("Recursos/fondo2.jpg")
+        bg = pygame.transform.smoothscale(bg, DISPLAY_MODE)
         self.surface.blit(bg, (0,0))
 
     def jugar(self):
@@ -229,14 +231,14 @@ class P2Game:
         if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
             self.loser = '1'
-            raise "Toco Pared"
+            raise "Toco Pared 1"
 
         for x in self.walls:
             for i in range(self.snake.largo):
                 if self.colision(self.snake.x[i], self.snake.y[i], x[0], x[1]):
                     self.musica_juego('crash')
                     self.loser = '1'
-                    raise "Toco Pared"
+                    raise "Toco Pared 1"
 
         if not (0 <= self.snake2.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake2.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
