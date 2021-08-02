@@ -5,10 +5,10 @@ import highscore_handler
 
 def menu(surface):
     surface.fill((0,0,0))
-    font = pygame.font.SysFont('arial', 30)
-    line1 = font.render(f"JUGAR", True, (250, 255, 255))
-    line2 = font.render(f"HIGHSCORES", True, (250, 255, 255))
-    line3 = font.render(f"SALIR", True, (255, 255, 255))
+    font = pygame.font.SysFont('pixelar', 40)
+    line1 = font.render(f"JUGAR", True, (0, 0, 0))
+    line2 = font.render(f"HIGHSCORES", True, (0, 0, 0))
+    line3 = font.render(f"SALIR", True, (0, 0, 0))
 
     button_1 = pygame.Rect(250,50,500,100)
     button_2 = pygame.Rect(250,160,500,100)
@@ -33,9 +33,9 @@ def menu(surface):
                         exit()
             elif event.type == QUIT:
                 exit()
-        pygame.draw.rect(surface, (255,0,0), button_1)
-        pygame.draw.rect(surface, (255,0,0), button_2)
-        pygame.draw.rect(surface, (255,0,0), button_3)
+        pygame.draw.rect(surface, (61, 227, 179), button_1)
+        pygame.draw.rect(surface, (61, 227, 179), button_2)
+        pygame.draw.rect(surface, (61, 227, 179), button_3)
 
         surface.blit(line1, (400, 90))
         surface.blit(line2, (400, 190))
@@ -44,10 +44,10 @@ def menu(surface):
     
 def plyrs(surface):
     surface.fill((0,0,0))
-    font = pygame.font.SysFont('arial', 30)
-    line1 = font.render(f"1 Player", True, (250, 255, 255))
-    line2 = font.render(f"2 Player", True, (250, 255, 255))
-    line3 = font.render(f"SALIR", True, (255, 255, 255))
+    font = pygame.font.SysFont('pixelar', 40)
+    line1 = font.render(f"1 Player", True, (0, 0, 0))
+    line2 = font.render(f"2 Player", True, (0, 0, 0))
+    line3 = font.render(f"SALIR", True, (0, 0, 0))
 
     button_1 = pygame.Rect(250,50,500,100)
     button_2 = pygame.Rect(250,160,500,100)
@@ -70,9 +70,9 @@ def plyrs(surface):
                         return menu(surface)
             elif event.type == QUIT:
                 exit()
-        pygame.draw.rect(surface, (255,0,0), button_1)
-        pygame.draw.rect(surface, (255,0,0), button_2)
-        pygame.draw.rect(surface, (255,0,0), button_3)
+        pygame.draw.rect(surface, (127, 216, 239), button_1)
+        pygame.draw.rect(surface, (127, 216, 239), button_2)
+        pygame.draw.rect(surface, (127, 216, 239), button_3)
         surface.blit(line1, (400, 90))
         surface.blit(line2, (400, 190))
         surface.blit(line3, (400, 290))
@@ -80,12 +80,12 @@ def plyrs(surface):
 
 def highscores(surface):
     surface.fill((0,0,0))
-    font = pygame.font.SysFont('arial', 30)
-    line1 = font.render(f"Highscores", True, (250, 255, 255))
+    font = pygame.font.SysFont('arial', 40)
+    line1 = font.render(f"Highscores", True, (249, 159, 251))
     highscores = highscore_handler.get()
     highscores = [f'{x} : {highscores[x]}'for x in highscores.keys()]
-    line2 = [font.render(x, True, (250, 255, 255)) for x in highscores][:5]
-    line3 = font.render(f"Salir", True, (255, 255, 255))
+    line2 = [font.render(x, True, (255, 255, 255)) for x in highscores][:5]
+    line3 = font.render(f"Salir", True, (0,0,0))
 
     #button_1 = pygame.Rect(250,50,500,100)
     #button_2 = pygame.Rect(250,160,500,100)
@@ -100,7 +100,7 @@ def highscores(surface):
                         return menu(surface)
             elif event.type == QUIT:
                 exit()
-        pygame.draw.rect(surface, (255,0,0), button_3)
+        pygame.draw.rect(surface, (249, 159, 251), button_3)
         surface.blit(line1 , (400, 25))
         down = 0
         for x in line2:

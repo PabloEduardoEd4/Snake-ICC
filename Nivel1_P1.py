@@ -9,10 +9,9 @@ from config import *
 from entities import *
 
 class Game:
-    def __init__(self):
-        pygame.init()
-        pygame.display.set_caption("Snake Joaquin M")
-
+    def __init__(self, surface):
+        self.surface = surface
+        self.surface.fill((0,0,0))
         pygame.mixer.init()
         self.musica_fondo()
 
@@ -83,7 +82,6 @@ class Game:
         pygame.display.flip()
 
     def run(self):
-        self.surface = pygame.display.set_mode((1000, 500))
         self.snake = Snake(self.surface)
         self.snake.dibujar_snake()
         self.manzana = Manzana(self.surface)

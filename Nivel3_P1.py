@@ -63,11 +63,9 @@ class bloques:
 
 
 class Game:
-    def __init__(self):
-        pygame.init()
-        self.surface = pygame.display.set_mode((1000, 520))
-        pygame.display.set_caption("Snake Joaquin M")
-
+    def __init__(self, surface):
+        self.surface = surface
+        self.surface.fill((0,0,0))
         pygame.mixer.init()
         self.musica_fondo()
 

@@ -13,7 +13,7 @@ def register(surface, text = "Type Name of P1"):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                done = True
+                return None
             elif event.type == KEYDOWN:
                 if event.key == K_RETURN:
                     return name if name != '' else 'Anon' + str(randint(1,1010101010))
