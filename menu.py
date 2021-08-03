@@ -37,7 +37,7 @@ def menu(surface):
             if button_4.collidepoint(mx, my):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        return pastgames()
+                        return pastgames(surface)
             elif event.type == QUIT:
                 exit()
         pygame.draw.rect(surface, (61, 227, 179), button_1)
@@ -116,9 +116,9 @@ def highscores(surface):
         surface.blit(line3, (400, 290))
         pygame.display.update()
 
-def pastgames():
+def pastgames(surface):
     surface.fill((0,0,0))
-    font = pygame.font.SysFont('arial', 40)
+    font = pygame.font.SysFont('pixelar', 40)
     line1 = font.render(f"Last 5 Games", True, (249, 159, 251))
     with open(PASTGAMESFILE, 'r') as file:
         line2 = [font.render(x.strip('\n'), True, (255, 255, 255)) for x in file][-5:]

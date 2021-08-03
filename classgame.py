@@ -83,16 +83,16 @@ class P1Game:
 
 
     def score(self):
-        font = pygame.font.SysFont('arial',30)
+        font = pygame.font.SysFont('pixelar',30)
         score = font.render(f"Score: {self.snake.largo}",True,(0,0,0))
         self.surface.blit(score,(550,10))
 
     def perder(self):
         self.fondo_juego()
-        font = pygame.font.SysFont('arial', 30)
-        line1 = font.render(f"Game over! Tu score es {self.snake.largo}", True, (236, 255, 0))
+        font = pygame.font.SysFont('pixelar', 30)
+        line1 = font.render(f"Game over! Tu score es {self.snake.largo}", True, (0, 0, 0))
         self.surface.blit(line1, (200, 300))
-        line2 = font.render("Para jugar otra vez presiona Enter. Para salir presiona ESC!", True, (255, 0, 0))
+        line2 = font.render("Para jugar otra vez presiona Enter. Para salir presiona ESC!", True, (0, 0, 0))
         self.surface.blit(line2, (200, 350))
         pygame.mixer.music.pause()
         pygame.display.flip()
@@ -253,23 +253,23 @@ class P2Game:
                     raise "Toco Pared 2"
 
     def score(self):
-        font = pygame.font.SysFont('pixel',30)
+        font = pygame.font.SysFont('pixelar',30)
         score = font.render(f"Morado: {self.snake.largo}",True,(255,255,255))
         self.surface.blit(score,(125,10))
 
     def score2(self):
-        font = pygame.font.SysFont('pixel',30)
+        font = pygame.font.SysFont('pixelar',30)
         score2 = font.render(f"Verde: {self.snake2.largo}",True,(255,255,255))
         self.surface.blit(score2,(800,10))
 
     def perder(self):
         self.fondo_juego()
-        font = pygame.font.SysFont('pixel', 30)
-        if self.snake.largo > self.snake2.largo or self.loser == '2':
-            line0 = font.render(f"¡Snake Morado ganó este nivel!", True, (255, 255, 255))
+        font = pygame.font.SysFont('pixelar', 30)
+        if (self.snake.largo > self.snake2.largo and self.loser != '1') or self.loser == '2':
+            line0 = font.render(f"¡Snake Morado ganó este nivel!", True, (255, 0, 0))
             self.surface.blit(line0, (200, 275))
-        elif self.snake.largo < self.snake2.largo or self.loser == '1':
-            line0 = font.render(f"¡Snake Verde ganó este nivel!", True, (255, 255, 255))
+        elif (self.snake.largo < self.snake2.largo and self.loser != '2') or self.loser == '1':
+            line0 = font.render(f"¡Snake Verde ganó este nivel!", True, (255, 0, 0))
             self.surface.blit(line0, (200, 275))
         line3 = font.render("Para jugar siguiente nivel presiona Enter. Para salir presiona ESC!", True, (255, 255, 255))
         self.surface.blit(line3, (200, 350))

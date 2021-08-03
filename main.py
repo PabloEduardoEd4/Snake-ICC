@@ -48,8 +48,3 @@ if __name__ == '__main__':
             notended = game.run()
             if not notended:
                 break
-    '''
-    highscore_handler.add('Pablo', 5)
-    input()
-    print(highscore_handler.get())
-    '''
