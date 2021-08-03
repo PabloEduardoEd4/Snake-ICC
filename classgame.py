@@ -22,14 +22,14 @@ class P1Game:
         self.bloque.dibujar_pared()
 
     def musica_fondo(self):
-        pygame.mixer.music.load("Recursos/bg_music_1.mp3")
+        pygame.mixer.music.load(BACKGROUND_MUSIC)
         pygame.mixer.music.play(-1, 0)
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("Recursos/roblox.mp3")
+            sonido = pygame.mixer.Sound(CRASH_SF)
         elif sonidos == 'ding':
-            sonido = pygame.mixer.Sound("Recursos/ding.mp3")
+            sonido = pygame.mixer.Sound(DING_SF)
         pygame.mixer.Sound.play(sonido)
 
     def reset(self):
@@ -45,7 +45,7 @@ class P1Game:
         return False
 
     def fondo_juego(self):
-        bg = pygame.image.load("Recursos/pasto.jpg")
+        bg = pygame.image.load(BACKGROUND_IMAGE)
         bg = pygame.transform.smoothscale(bg, DISPLAY_MODE)
         self.surface.blit(bg, (0,0))
 
@@ -71,7 +71,7 @@ class P1Game:
                 raise "Se toca"
 
         # Toca pared
-        if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
+        if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 20 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
             raise "Toco Pared"
 
@@ -164,14 +164,14 @@ class P2Game:
         self.bloque.dibujar_pared()
 
     def musica_fondo(self):
-        pygame.mixer.music.load("Recursos/bg_music_1.mp3")
+        pygame.mixer.music.load(BACKGROUND_MUSIC)
         pygame.mixer.music.play(-1, 0)
 
     def musica_juego(self, sonidos):
         if sonidos == "crash":
-            sonido = pygame.mixer.Sound("Recursos/roblox.mp3")
+            sonido = pygame.mixer.Sound(CRASH_SF)
         if sonidos == 'ding':
-            sonido = pygame.mixer.Sound("Recursos/ding.mp3")
+            sonido = pygame.mixer.Sound(DING_SF)
         pygame.mixer.Sound.play(sonido)
 
     def reset(self):
@@ -228,7 +228,7 @@ class P2Game:
                 raise "Se toca 2"
 
         # Toca pared
-        if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
+        if not (0 <= self.snake.x[0] <= DISPLAY_MODE[0] - 20 and 0 <= self.snake.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
             self.loser = '1'
             raise "Toco Pared 1"
@@ -240,7 +240,7 @@ class P2Game:
                     self.loser = '1'
                     raise "Toco Pared 1"
 
-        if not (0 <= self.snake2.x[0] <= DISPLAY_MODE[0] - 60 and 0 <= self.snake2.y[0] <= DISPLAY_MODE[1] - 20):
+        if not (0 <= self.snake2.x[0] <= DISPLAY_MODE[0] - 20 and 0 <= self.snake2.y[0] <= DISPLAY_MODE[1] - 20):
             self.musica_juego('crash')
             self.loser = '2'
             raise "Toco Pared 2"

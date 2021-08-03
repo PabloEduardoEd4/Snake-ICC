@@ -6,9 +6,10 @@ import random
 from config import *
 
 class Manzana:
-    def __init__(self, Dibujo, walls, imagen = "Recursos/manzana255.png"):
+    def __init__(self, Dibujo, walls, imagen = APPLE_IMG):
         self.Dibujo = Dibujo
         self.manzana = pygame.image.load(imagen).convert()
+        self.manzana = pygame.transform.smoothscale(self.manzana, (SIZE,SIZE))
         self.x = 120
         self.y = 120
 
@@ -27,10 +28,10 @@ class Manzana:
 
 
 class Snake:
-    def __init__(self, Dibujo, pos = (40,40), imagen = "Recursos/cabeza255.png"):
+    def __init__(self, Dibujo, pos = (10*SIZE,10*SIZE), imagen = SNAKE_IMG):
         self.Dibujo = Dibujo
         self.snake = pygame.image.load(imagen).convert()
-        self.snake = pygame.transform.smoothscale(self.snake, (40,40))
+        self.snake = pygame.transform.smoothscale(self.snake, (SIZE,SIZE))
         self.direccion = ''
 
         self.largo = 1
@@ -77,7 +78,7 @@ class Snake:
         self.y.append(-1)
 
 class bloques:
-    def __init__(self, Dibujo , walls, imagen = "Recursos/piedra_2.jpg"):
+    def __init__(self, Dibujo , walls, imagen = BLOQUE_IMG):
         self.walls = walls
         self.Dibujo = Dibujo
         self.bloque = pygame.image.load(imagen).convert()

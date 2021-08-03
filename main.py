@@ -13,7 +13,7 @@ from classgame import *
 
 if __name__ == '__main__':
     pygame.init()
-    pygame.display.set_caption("Snake v5.0")
+    pygame.display.set_caption(GAMENAME)
     surface = pygame.display.set_mode(DISPLAY_MODE)
     name = login.register(surface)
     if name == None:
@@ -25,7 +25,7 @@ if __name__ == '__main__':
         game_name = f'{name} v {name1}'
         if name1 == None:
             exit()
-    with open('pastgames.txt', 'a+') as file:
+    with open(PASTGAMESFILE, 'a+') as file:
         file.write(f'{game_name}\n')
     if plys == 1:
         points = (10,15,20,30)

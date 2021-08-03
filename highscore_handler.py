@@ -1,6 +1,8 @@
 import json
 
-def add(name, score, filename = 'highscore.json'):
+from config import *
+
+def add(name, score, filename = HIGHSCOREFILE):
     try:
         with open(filename) as file:
             highscores = json.load(file)
@@ -11,7 +13,7 @@ def add(name, score, filename = 'highscore.json'):
     with open(filename, 'w+') as file:
         json.dump(highscores, file)
 
-def get(filename = 'highscore.json'):
+def get(filename = HIGHSCOREFILE):
         try:
             with open(filename,'r') as file:
                 highscores = json.load(file)
